@@ -7,6 +7,7 @@ import Doctors from "./Containers/Doctors/Doctors";
 import Contact from "./Containers/Contact/Contact";
 import Departments from "./Containers/Departments/Departments";
 import Auth from "./Containers/Auth/Auth";
+import Medicine from "./Containers/Medicine/Medicine";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path={'/About'} component={About}/>
         <Route path={'/Contact'} component={Contact}/>
         <Route path={'/Auth'} component={Auth}/>
+        <Route path={'/Medicine'} component={Medicine}/>
       </Switch>
       <Footer />
     </>
