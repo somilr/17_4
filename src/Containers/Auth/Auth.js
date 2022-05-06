@@ -6,11 +6,11 @@ function Auth(props) {
 
     const [usertype, setuserType] = useState('Login');
     const [password, setpassword] = useState(false)
-    const handleLogin = () => {
-
+    const handleLogin = (values) => {
+        alert(JSON.stringify(values, null, 2));
     }
-    const handleSignup = () => {
-
+    const handleSignup = (values) => {
+        alert(JSON.stringify(values, null, 2));
     }
     const passwordchng = () => {
 
@@ -27,6 +27,9 @@ function Auth(props) {
         password: yup.string().required('please enter your password')
     }
 
+   
+    
+
     let loginschema, initval;
 
     if (usertype === "Login") {
@@ -42,13 +45,16 @@ function Auth(props) {
             email: '',
             password: ''
         }
-    }
-
+    } 
     const formik = useFormik({
         initialValues: { initval },
         validationSchema: loginschema,
         onSubmit: (values, { resetForm }) => {
-            alert(JSON.stringify(values, null, 2));
+            if (usertype === "Login") {
+                handleLogin(values);
+            } else if (usertype === "Signup") {
+                handleSignup(values);
+            }
             resetForm();
         },
     });
@@ -79,18 +85,22 @@ function Auth(props) {
                             <div className="row">
                                 {
                                     password === true ? <div className="col-md-12 form-group mt-3 mt-md-0">
-                                        <input
-                                            type="email"
-                                            className="form-control"
-                                            name="email"
-                                            id="email"
-                                            placeholder="Your email"
-                                            onChange={formik.handleChange}
-                                            value={formik.values.email}
-                                        />
-                                        <p>{formik.errors.email}</p>
-                                        <div className="validate" />
-                                    </div> : null
+                                            {/* <input
+                                                type="email"
+                                                className="form-control"
+                                                name="email"
+                                                id="email"
+                                                placeholder="Your Email"
+                                                // onChange={formik.handleChange}
+                                                // value={formik.values.email}
+                                                // onBlur={formik.handleBlur}
+                                            /> */}
+                                            {/* {
+                                                formik.errors.email && formik.touched.email ? <p>{formik.errors.email}</p> : null
+                                            } */}
+
+                                            <div className="validate" />
+                                        </div> : null
                                 }
                                 {
                                     // password === true ? <div className="col-md-12 form-group mt-3 mt-md-0">
@@ -109,14 +119,31 @@ function Auth(props) {
                                                 placeholder="Your name"
                                                 onChange={formik.handleChange}
                                                 value={formik.values.name}
+                                                onBlur={formik.handleBlur}
                                             />
-                                            <p>{formik.errors.name}</p>
+                                            {
+                                                formik.errors.name && formik.touched.name ? <p>{formik.errors.name}</p> : null
+                                            }
+                                           
                                             <div className="validate" />
                                         </div>
 
                                 }
                                 <div className="col-md-12 form-group mt-3 mt-md-0">
-                                    <input type="email" className="form-control" name="email" id="email" placeholder="Your name" data-rule="email" data-msg="Please enter a valid email" />
+                                    <input type="email"
+                                        className="form-control"
+                                        name="email" id="email"
+                                        placeholder="Your Email"
+                                        data-rule="email"
+                                        data-msg="Please enter a valid email"
+                                        onChange={formik.handleChange}
+                                        value={formik.values.email}
+                                        onBlur={formik.handleBlur}
+                                    />
+                                    {
+                                        formik.errors.email && formik.touched.email ? <p>{formik.errors.email}</p> : null
+                                    }
+
                                     <div className="validate" />
                                 </div>
                                 <div className="col-md-12 form-group mt-3 mt-md-0">
@@ -128,8 +155,12 @@ function Auth(props) {
                                         placeholder="password"
                                         onChange={formik.handleChange}
                                         value={formik.values.password}
+                                        onBlur={formik.handleBlur}
                                     />
-                                    <p>{formik.errors.password}</p>
+                                    {
+                                        formik.errors.password && formik.touched.password ? <p>{formik.errors.password}</p> : null
+                                    }
+
                                     <div className="validate" />
                                 </div>
                             </div>

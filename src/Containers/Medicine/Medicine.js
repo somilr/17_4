@@ -47,7 +47,7 @@ const MedicineData =
   ];
 
 const EmployeeData =
-[
+  [
     {
       name: "amit",
       age: 35,
@@ -100,11 +100,11 @@ function Medicine(props) {
               <List data={MedicineData} />
               <List data={EmployeeData} />
             </div>
-            </form>
-         </div>
+          </form>
+        </div>
       </section>
-        </div >
-   );
+    </div >
+  );
 }
 
-        export default Medicine;
+export default Medicine;
