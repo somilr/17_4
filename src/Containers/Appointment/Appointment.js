@@ -12,7 +12,8 @@ function Appointment(props) {
         name: yup.string().required("please enter name"),
         email: yup.string().required('enter email').email('enter valid email'),
         phone: yup.number().required("please enter phone").positive().integer(),
-        date: yup.date().required("please enter date")
+        date: yup.date().required("please enter date"),
+        message: yup.string().required("please enter message")
     });
 
 
@@ -43,7 +44,6 @@ function Appointment(props) {
                         Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
                 </div>
                 <Formik value={formik}>
-
                     <Form onSubmit={formik.handleSubmit} action method="post" role="form" className="php-email-form">
                         <div className="row">
                             <div className="col-md-4 form-group">
@@ -54,6 +54,8 @@ function Appointment(props) {
                                     id="name"
                                     placeholder="Your Name"
                                     onChange={formik.handleChange}
+                                    value={formik.values.name}
+                                    onBlur={formik.handleBlur}
                                 />
                                 {
                                     formik.errors.name && formik.touched.name ? <p>{formik.errors.name}</p> : ''
@@ -68,6 +70,8 @@ function Appointment(props) {
                                     id="email"
                                     placeholder="Your Email"
                                     onChange={formik.handleChange}
+                                    value={formik.values.email}
+                                    onBlur={formik.handleBlur}
                                 />
                                 {
                                     formik.errors.email && formik.touched.email ? <p>{formik.errors.email}</p> : ''
@@ -82,6 +86,8 @@ function Appointment(props) {
                                     id="phone"
                                     placeholder="Your Phone"
                                     onChange={formik.handleChange}
+                                    value={formik.values.phone}
+                                    onBlur={formik.handleBlur}
                                 />
                                 {
                                     formik.errors.phone && formik.touched.phone ? <p>{formik.errors.phone}</p> : ''
@@ -98,8 +104,10 @@ function Appointment(props) {
                                     id="date"
                                     placeholder="Appointment Date"
                                     onChange={formik.handleChange}
+                                    value={formik.values.date}
+                                    onBlur={formik.handleBlur}
                                 />
-                                 {
+                                {
                                     formik.errors.date && formik.touched.date ? <p>{formik.errors.date}</p> : ''
                                 }
                                 <div className="validate" />
@@ -115,7 +123,18 @@ function Appointment(props) {
                             </div>
                         </div>
                         <div className="form-group mt-3">
-                            <textarea className="form-control" name="message" rows={5} placeholder="Message (Optional)" defaultValue={""} />
+                            <textarea className="form-control"
+                                name="message"
+                                rows={5}
+                                placeholder="Message (Optional)"
+                                defaultValue={""}
+                                onChange={formik.handleChange}
+                                value={formik.values.date}
+                                onBlur={formik.handleBlur}
+                            />
+                            {
+                                formik.errors.message && formik.touched.message ? <p>{formik.errors.message}</p> : ''
+                            }
                             <div className="validate" />
                         </div>
                         <div className="mb-3">
