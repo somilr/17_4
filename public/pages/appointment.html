@@ -23,105 +23,105 @@
 </head>
 
 <body>
-
-  <div class="main-header">
-    <div id="topbar" class="d-flex align-items-center fixed-top">
-      <div class="container d-flex justify-content-between">
-        <div class="contact-info d-flex align-items-center">
-          <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">cityhospital@example.com</a>
-          <i class="bi bi-phone"></i> +91 9988776655
-        </div>
-        <div class="d-none d-lg-flex social-links align-items-center">
-          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+  <main>
+    <div class="main-header">
+      <div id="topbar" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex justify-content-between">
+          <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">cityhospital@example.com</a>
+            <i class="bi bi-phone"></i> +91 9988776655
+          </div>
+          <div class="d-none d-lg-flex social-links align-items-center">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+          </div>
         </div>
       </div>
+
+      <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+          <div class="logo">
+            <a href="../index.html">
+              <h1 class="logo me-auto">City</h1><br>
+              <h2 class="logo-tiny-text me-auto">Multispeciality Hospital</h2>
+            </a>
+          </div>
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+              <li><a class="nav-link scrollto" href="../index.html">Home</a></li>
+              <li><a class="nav-link scrollto" href="./departments.html">Departments</a></li>
+              <li><a class="nav-link scrollto" href="./doctors.html">Doctors</a></li>
+              <li><a class="nav-link scrollto" href="./about.html">About</a></li>
+              <li><a class="nav-link scrollto" href="./contact.html">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+
+          <a href="./appointment.html" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span>
+            Appointment</a>
+
+        </div>
+      </header>
     </div>
+    <section id="appointment" class="appointment">
+      <div class="container">
 
-    <header id="header" class="fixed-top">
-      <div class="container d-flex align-items-center">
-        <div class="logo">
-          <a href="../index.html">
-            <h1 class="logo me-auto">City</h1><br>
-            <h2 class="logo-tiny-text me-auto">Multispeciality Hospital</h2>
-          </a>
+        <div class="section-title">
+          <h2>Make an Appointment</h2>
+          <p>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
+            blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
+            Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
         </div>
-        <nav id="navbar" class="navbar order-last order-lg-0">
-          <ul>
-            <li><a class="nav-link scrollto" href="../index.html">Home</a></li>
-            <li><a class="nav-link scrollto" href="./departments.html">Departments</a></li>
-            <li><a class="nav-link scrollto" href="./doctors.html">Doctors</a></li>
-            <li><a class="nav-link scrollto" href="./about.html">About</a></li>
-            <li><a class="nav-link scrollto" href="./contact.html">Contact</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
 
-        <a href="./appointment.html" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span>
-          Appointment</a>
-
+        <form action="" method="post" role="form" class="php-email-form">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4"
+                data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                data-rule="email" data-msg="Please enter a valid email">
+              <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone"
+                data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 form-group mt-3">
+              <input type="datetime" name="date" class="form-control datepicker" id="date"
+                placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-md-4 form-group mt-3">
+              <select name="department" id="department" class="form-select">
+                <option value="">Select Department</option>
+                <option value="Department 1">Department 1</option>
+                <option value="Department 2">Department 2</option>
+                <option value="Department 3">Department 3</option>
+              </select>
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+            <div class="validate"></div>
+          </div>
+          <div class="mb-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+          </div>
+          <div class="text-center"><button type="submit">Make an Appointment</button></div>
+        </form>
       </div>
-    </header>
-  </div>
-  <section id="appointment" class="appointment">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Make an Appointment</h2>
-        <p>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
-          blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
-          Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
-      </div>
-
-      <form action="" method="post" role="form" class="php-email-form">
-        <div class="row">
-          <div class="col-md-4 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4"
-              data-msg="Please enter at least 4 chars">
-            <div class="validate"></div>
-          </div>
-          <div class="col-md-4 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email"
-              data-msg="Please enter a valid email">
-            <div class="validate"></div>
-          </div>
-          <div class="col-md-4 form-group mt-3 mt-md-0">
-            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4"
-              data-msg="Please enter at least 4 chars">
-            <div class="validate"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 form-group mt-3">
-            <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date"
-              data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-            <div class="validate"></div>
-          </div>
-          <div class="col-md-4 form-group mt-3">
-            <select name="department" id="department" class="form-select">
-              <option value="">Select Department</option>
-              <option value="Department 1">Department 1</option>
-              <option value="Department 2">Department 2</option>
-              <option value="Department 3">Department 3</option>
-            </select>
-            <div class="validate"></div>
-          </div>
-        </div>
-        <div class="form-group mt-3">
-          <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-          <div class="validate"></div>
-        </div>
-        <div class="mb-3">
-          <div class="loading">Loading</div>
-          <div class="error-message"></div>
-          <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-        </div>
-        <div class="text-center"><button type="submit">Make an Appointment</button></div>
-      </form>
-    </div>
-  </section>
+    </section>
   </main>
 
   <footer id="footer">
