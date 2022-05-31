@@ -1,6 +1,34 @@
-import React from 'react'
+import * as yup from 'yup';
+import { Form, Formik, useFormik } from 'formik';
+import { useState } from 'react';
+
 
 export default function Contact() {
+    const [userType, setUserType] = useState([])
+
+
+    let schema = yup.object().shape({
+        name: yup.string().required("please enter name"),
+        email: yup.string().required('enter email').email('enter valid email'),
+        subject: yup.string().required("please enter subject"),
+        message: yup.string().required("please enter message")
+    });
+
+
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            subject: '',
+            message:''
+        },
+        validationSchema: schema,
+        onSubmit: values => {
+            alert(JSON.stringify(values, null, 2));
+        },
+    });
+
     return (
         <section id="contact" className="contact">
             <div className="container">
@@ -33,21 +61,64 @@ export default function Contact() {
                         </div>
                     </div>
                     <div className="col-lg-8 mt-5 mt-lg-0">
-                        <form action method="post" role="form" className="php-email-form">
+                    <Formik value={formik}>
+                    <Form onSubmit={formik.handleSubmit} action method="post" role="form" className="php-email-form">
                             <div className="row">
                                 <div className="col-md-6 form-group">
                                     <input 
-                                    type="text" name="name" className="form-control" id="name" placeholder="Your Name" required />
+                                    type="text" 
+                                    name="name" 
+                                    className="form-control" 
+                                    id="name" 
+                                    placeholder="Your Name" required 
+                                    onChange={formik.handleChange}
+                                    value={formik.values.name}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {
+                                    formik.errors.name && formik.touched.name ? <p>{formik.errors.name}</p> : ''
+                                }
                                 </div>
                                 <div className="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" required />
+                                    <input 
+                                    type="email" 
+                                    className="form-control" 
+                                    name="email" 
+                                    id="email" 
+                                    placeholder="Your Email" required
+                                    onChange={formik.handleChange}
+                                    value={formik.values.email}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {
+                                    formik.errors.email && formik.touched.email ? <p>{formik.errors.email}</p> : ''
+                                }
                                 </div>
                             </div>
                             <div className="form-group mt-3">
-                                <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" required />
+                                <input 
+                                type="text" 
+                                className="form-control" 
+                                name="subject" 
+                                id="subject" 
+                                placeholder="Subject" required 
+                                onChange={formik.handleChange}
+                                    value={formik.values.subject}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {
+                                    formik.errors.subject && formik.touched.subject ? <p>{formik.errors.subject}</p> : ''
+                                }
                             </div>
                             <div className="form-group mt-3">
-                                <textarea className="form-control" name="message" rows={5} placeholder="Message" required defaultValue={""} />
+                                <textarea className="form-control" name="message" rows={5} placeholder="Message" required defaultValue={""} 
+                                  onChange={formik.handleChange}
+                                  value={formik.values.submessageject}
+                                  onBlur={formik.handleBlur}
+                              />
+                              {
+                                  formik.errors.message && formik.touched.message ? <p>{formik.errors.message}</p> : ''
+                              }
                             </div>
                             <div className="my-3">
                                 <div className="loading">Loading</div>
@@ -55,7 +126,8 @@ export default function Contact() {
                                 <div className="sent-message">Your message has been sent. Thank you!</div>
                             </div>
                             <div className="text-center"><button type="submit">Send Message</button></div>
-                        </form>
+                        </Form>
+                        </Formik>
                     </div>
                 </div>
             </div>

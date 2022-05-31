@@ -11,7 +11,7 @@ function Appointment(props) {
     let schema = yup.object().shape({
         name: yup.string().required("please enter name"),
         email: yup.string().required('enter email').email('enter valid email'),
-        phone: yup.number().required("please enter phone").positive().integer(),
+        phone: yup.number().min(10).required("please enter number"),
         date: yup.date().required("please enter date"),
         message: yup.string().required("please enter message")
     });
@@ -23,7 +23,8 @@ function Appointment(props) {
             name: '',
             email: '',
             phone: '',
-            date: ''
+            date: '',
+            message:''
         },
         validationSchema: schema,
         onSubmit: values => {
@@ -32,7 +33,7 @@ function Appointment(props) {
     });
 
 
-    console.log(formik.errors);
+    // console.log(formik.errors);
 
     return (
         <section id="appointment" className="appointment">
@@ -129,7 +130,7 @@ function Appointment(props) {
                                 placeholder="Message (Optional)"
                                 defaultValue={""}
                                 onChange={formik.handleChange}
-                                value={formik.values.date}
+                                value={formik.values.message}
                                 onBlur={formik.handleBlur}
                             />
                             {
