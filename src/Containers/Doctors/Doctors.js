@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Doctors() {
   return (
-   <section id="doctors" className="doctors">
+  <section id="doctors" className="doctors">
   <div className="container">
     <div className="section-title">
       <h2>Doctors</h2>

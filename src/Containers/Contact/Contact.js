@@ -21,7 +21,7 @@ export default function Contact() {
             name: '',
             email: '',
             subject: '',
-            message:''
+            message: ''
         },
         validationSchema: schema,
         onSubmit: values => {
@@ -61,72 +61,76 @@ export default function Contact() {
                         </div>
                     </div>
                     <div className="col-lg-8 mt-5 mt-lg-0">
-                    <Formik value={formik}>
-                    <Form onSubmit={formik.handleSubmit} action method="post" role="form" className="php-email-form">
-                            <div className="row">
-                                <div className="col-md-6 form-group">
-                                    <input 
-                                    type="text" 
-                                    name="name" 
-                                    className="form-control" 
-                                    id="name" 
-                                    placeholder="Your Name" required 
-                                    onChange={formik.handleChange}
-                                    value={formik.values.name}
-                                    onBlur={formik.handleBlur}
-                                />
-                                {
-                                    formik.errors.name && formik.touched.name ? <p>{formik.errors.name}</p> : ''
-                                }
+                        <Formik value={formik}>
+                            <Form onSubmit={formik.handleSubmit} action method="post" role="form" className="php-email-form">
+                                <div className="row">
+                                    <div className="col-md-6 form-group">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            className="form-control"
+                                            id="name"
+                                            placeholder="Your Name"
+                                            onChange={formik.handleChange}
+                                            value={formik.values.name}
+                                            onBlur={formik.handleBlur}
+                                        />
+                                        {
+                                            formik.errors.name && formik.touched.name ? <p>{formik.errors.name}</p> : ''
+                                        }
+                                    </div>
+                                    <div className="col-md-6 form-group mt-3 mt-md-0">
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            name="email"
+                                            id="email"
+                                            placeholder="Your Email"
+                                            onChange={formik.handleChange}
+                                            value={formik.values.email}
+                                            onBlur={formik.handleBlur}
+                                        />
+                                        {
+                                            formik.errors.email && formik.touched.email ? <p>{formik.errors.email}</p> : ''
+                                        }
+                                    </div>
                                 </div>
-                                <div className="col-md-6 form-group mt-3 mt-md-0">
-                                    <input 
-                                    type="email" 
-                                    className="form-control" 
-                                    name="email" 
-                                    id="email" 
-                                    placeholder="Your Email" required
-                                    onChange={formik.handleChange}
-                                    value={formik.values.email}
-                                    onBlur={formik.handleBlur}
-                                />
-                                {
-                                    formik.errors.email && formik.touched.email ? <p>{formik.errors.email}</p> : ''
-                                }
+                                <div className="form-group mt-3">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="subject"
+                                        id="subject"
+                                        placeholder="Subject"
+                                        onChange={formik.handleChange}
+                                        value={formik.values.subject}
+                                        onBlur={formik.handleBlur}
+                                    />
+                                    {
+                                        formik.errors.subject && formik.touched.subject ? <p>{formik.errors.subject}</p> : ''
+                                    }
                                 </div>
-                            </div>
-                            <div className="form-group mt-3">
-                                <input 
-                                type="text" 
-                                className="form-control" 
-                                name="subject" 
-                                id="subject" 
-                                placeholder="Subject" required 
-                                onChange={formik.handleChange}
-                                    value={formik.values.subject}
-                                    onBlur={formik.handleBlur}
-                                />
-                                {
-                                    formik.errors.subject && formik.touched.subject ? <p>{formik.errors.subject}</p> : ''
-                                }
-                            </div>
-                            <div className="form-group mt-3">
-                                <textarea className="form-control" name="message" rows={5} placeholder="Message" required defaultValue={""} 
-                                  onChange={formik.handleChange}
-                                  value={formik.values.submessageject}
-                                  onBlur={formik.handleBlur}
-                              />
-                              {
-                                  formik.errors.message && formik.touched.message ? <p>{formik.errors.message}</p> : ''
-                              }
-                            </div>
-                            <div className="my-3">
-                                <div className="loading">Loading</div>
-                                <div className="error-message" />
-                                <div className="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div className="text-center"><button type="submit">Send Message</button></div>
-                        </Form>
+                                <div className="form-group mt-3">
+                                    <textarea
+                                        className="form-control"
+                                        name="message" rows={5}
+                                        placeholder="Message"
+                                        defaultValue={""}
+                                        onChange={formik.handleChange}
+                                        value={formik.values.submessageject}
+                                        onBlur={formik.handleBlur}
+                                    />
+                                    {
+                                        formik.errors.message && formik.touched.message ? <p>{formik.errors.message}</p> : ''
+                                    }
+                                </div>
+                                <div className="my-3">
+                                    <div className="loading">Loading</div>
+                                    <div className="error-message" />
+                                    <div className="sent-message">Your message has been sent. Thank you!</div>
+                                </div>
+                                <div className="text-center"><button type="submit">Send Message</button></div>
+                            </Form>
                         </Formik>
                     </div>
                 </div>

@@ -2,52 +2,49 @@ import React from 'react';
 import List from '../../Component/List/List';
 
 
-const MedicineData =
-  [
+const medicine = [
     {
-      id: 101,
-      name: 'Abacavir',
-      quantity: 25,
-      price: 150,
-      expiry: 2022,
-      status: true
+        id: 101,
+        name: 'Abacavir',
+        quantity: 25,
+        price: 150,
+        expiry: 2022,
+        status: true
     },
     {
-      id: 102,
-      name: 'Eltrombopag',
-      quantity: 90,
-      price: 550,
-      expiry: 2021,
-      status: true
+        id: 102,
+        name: 'Eltrombopag',
+        quantity: 90,
+        price: 550,
+        expiry: 2021,
+        status: true
     },
     {
-      id: 103,
-      name: 'Meloxicam',
-      quantity: 85,
-      price: 450,
-      expiry: 2025,
-      status: false
+        id: 103,
+        name: 'Meloxicam',
+        quantity: 85,
+        price: 450,
+        expiry: 2025,
+        status: false
     },
     {
-      id: 104,
-      name: 'Allopurinol',
-      quantity: 50,
-      price: 600,
-      expiry: 2023,
-      status: true
+        id: 104,
+        name: 'Allopurinol',
+        quantity: 50,
+        price: 600,
+        expiry: 2023,
+        status: true
     },
     {
-      id: 105,
-      name: 'Phenytoin',
-      quantity: 63,
-      price: 250,
-      expiry: 2021,
-      status: false
+        id: 105,
+        name: 'Phenytoin',
+        quantity: 63,
+        price: 250,
+        expiry: 2021,
+        status: false
     }
-  ];
-
-const EmployeeData =
-  [
+];
+const EmployeeData =[
     {
       name: "amit",
       age: 35,
@@ -83,28 +80,27 @@ const EmployeeData =
       bonus: 2000,
       status: true
     },
-  ]
+  ];
 
 function Medicine(props) {
-  return (
-    <div>
-      <section id="appointment" class="appointment">
-        <div class="container">
+    return (
+        <section id="appointment" className="appointment">
+            <div className="container">
+                <div className="section-title">
+                    <h2>Medicdine Data</h2>
+                   
+                </div>
+                <form action method="post" role="form" className="php-email-form">
+                    <div className="row">
+                        <List data={medicine} />
+                        <List data={EmployeeData} />
 
-          <div class="section-title">
-            <h2>Medicine</h2>
-          </div>
-
-          <form action="" method="post" role="form" class="php-email-form">
-            <div class="row">
-              <List data={MedicineData} />
-              <List data={EmployeeData} />
+                    </div>
+                </form>
             </div>
-          </form>
-        </div>
-      </section>
-    </div >
-  );
+        </section>
+
+    );
 }
 
 export default Medicine;
