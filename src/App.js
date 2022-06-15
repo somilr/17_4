@@ -12,6 +12,8 @@ import Appointment from "./Containers/Appointment/Appointment";
 import Doctors from "./Containers/Doctors/Doctors";
 import PublicRoute from "./Route/PublicRoute";
 import PrivateRoute from "./Route/PrivateRoute";
+import BookAppointment from "./Containers/Appointment/BookAppointment";
+import ListAppintment from "./Containers/Appointment/ListAppintment";
 
 
 
@@ -26,7 +28,9 @@ function App() {
         <PublicRoute path={'/Contact'} component={Contact}/>
         <PublicRoute restricted={true} path={'/Auth'} component={Auth}/>
         <PublicRoute path={'/Doctors'} component={Doctors}/>   
-        <PublicRoute path={'/Appointment'} component={Appointment} />
+        {/* <PrivateRoute path={'/Appointment'} component={Appointment} /> */}
+        <PublicRoute path={'/BookAppointment'} component={BookAppointment} />
+        <PublicRoute path={'/ListAppintment'} component={ListAppintment} />
         <PrivateRoute path={'/Medicine'} component={Medicine}/>
       </Switch>
       <Footer />
