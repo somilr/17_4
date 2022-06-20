@@ -7,5 +7,5 @@ export const InputBoxstyled = styled(Input)`
 
 export const FormFeebackstyled = styled(FormFeedback)`
 color: red;
-display: ${props => props.errors ? 'block' : 'none'};
+display: ${props => props.error ? 'block' : 'none'};
 `;

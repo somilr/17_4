@@ -8,6 +8,23 @@ import InputBox from '../../Component/InputBox/InputBox';
 function BookAppointment(props) {
     const history = useHistory()
 
+   
+
+    const handleSubmit = (values) => {
+        const data = JSON.parse(localStorage.getItem("users"));
+
+        console.log(data);
+
+        if (data === null) {
+            localStorage.setItem("users", JSON.stringify([values]));
+        } else {
+            data.push(values);
+            localStorage.setItem("users", JSON.stringify(data));
+        }
+
+        history.push("/listappointment");
+    }
+
     let schema = yup.object().shape({
         name: yup.string().required("please enter name"),
         email: yup.string().required('enter email').email('enter valid email'),
@@ -17,27 +34,6 @@ function BookAppointment(props) {
         message: yup.string().required("please enter message")
     });
 
-
-    // const handleSubmits = (values) => {
-    //     const data = JSON.parse(localStorage.getItem("users"));
-
-    //     console.log(data);
-
-    //     if (data === null) {
-    //         localStorage.setItem("users", JSON.stringify([values]));
-    //     } else {
-    //         data.push(values);
-    //         localStorage.setItem("users", JSON.stringify(data));
-    //     }
-
-    //     history.push("/listappointment");
-    // }
-
-
-
-    // const handleClick = () => {
-
-    // }
 
     const formik = useFormik({
         initialValues: {
@@ -49,25 +45,14 @@ function BookAppointment(props) {
             message: ''
         },
         validationSchema: schema,
-        onSubmit: values => {
-            const data = JSON.parse(localStorage.getItem("users"));
-
-            console.log(data);
-
-            if (data === null) {
-                localStorage.setItem("users", JSON.stringify([values]));
-            } else {
-                data.push(values);
-                localStorage.setItem("users", JSON.stringify(data));
-            }
-            
+        onSubmit: values => {  
             handleSubmit(values)
-            history.push("/listappointment");
+           
             // alert(JSON.stringify(values, null, 2));
         },
     });
 
-    const  { handleSubmit, errors, handleChange } = formik;
+    const  {  errors, handleChange, touched , handleBlur } = formik;
 
     return (
         <section id="appointment" className="appointment">
@@ -87,7 +72,7 @@ function BookAppointment(props) {
                     </div>
                 </div>
                 <Formik values={formik}>
-                    <Form onSubmit={handleSubmit} className="php-email-form">
+                    <Form onSubmit={formik.handleSubmit} className="php-email-form">
                         <div className="row">
                             <div className="col-md-4 form-group">
                                 <InputBox
@@ -96,9 +81,10 @@ function BookAppointment(props) {
                                     className="form-control"
                                     id="name"
                                     placeholder="Your Name"
-                                    errors={Boolean(errors.name)}
+                                    errors={Boolean(errors.name && touched.name)}
                                     errorMessages={errors.name}
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                 />
                             </div>
                             <div className="col-md-4 form-group mt-3 mt-md-0">
@@ -108,9 +94,10 @@ function BookAppointment(props) {
                                     name="email"
                                     id="email"
                                     placeholder="Your Email"
-                                    errors={Boolean(errors.email)}
+                                    errors={Boolean(errors.email && touched.email)}
                                     errorMessages={errors.email}
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                      />
                             </div>
                             <div className="col-md-4 form-group mt-3 mt-md-0">
@@ -119,11 +106,11 @@ function BookAppointment(props) {
                                     className="form-control"
                                     name="phone"
                                     id="phone"
-                                    maxLength={10}
                                     placeholder="Your Phone"
-                                    errors={Boolean(errors.phone)}
+                                    errors={Boolean(errors.phone && touched.phone)}
                                     errorMessages={errors.phone}
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                     />
                             </div>
                         </div>
@@ -135,15 +122,21 @@ function BookAppointment(props) {
                                     className="form-control datapicker"
                                     id="date"
                                     placeholder="Appointment Date"
-                                    errors={Boolean(errors.date)}
+                                    errors={Boolean(errors.date && touched.date)}
                                     errorMessages={errors.date}
                                     onChange={handleChange} 
-                                   
+                                    onBlur={handleBlur}
                                     />
                             </div>
                             <div className="col-md-4 form-group mt-3">
-                                <InputBox type="select"name="department" id="department" className="form-select" onChange={handleChange}
-                                    errors={Boolean(errors.department)} errorMessages={errors.department}>
+                                <InputBox type="select"
+                                name="department" 
+                                id="department" 
+                                className="form-select" 
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                errors={Boolean(errors.department && touched.department)} 
+                                errorMessages={errors.department}>
                                     <option disabled selected>Select Department</option>
                                     <option value="Department 1">Department 1</option>
                                     <option value="Department 2">Department 2</option>
@@ -158,9 +151,10 @@ function BookAppointment(props) {
                                 name="message" rows={5}
                                 placeholder="Message (Optional)"
                                 defaultValue={""}
-                                errors={Boolean(errors.message)}
+                                errors={Boolean(errors.message && touched.message)}
                                 errorMessages={errors.message}
                                 onChange={handleChange}
+                                onBlur={handleBlur}
                                  />
                         </div>
                         <div className="mb-3">
@@ -177,3 +171,4 @@ function BookAppointment(props) {
 }
 
 export default BookAppointment;
+

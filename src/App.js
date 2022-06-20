@@ -8,7 +8,7 @@ import Departments from "./Containers/Departments/Departments";
 import Auth from "./Containers/Auth/Auth";
 import Medicine from "./Containers/Medicine/Medicine";
 // import  Drawer  from "./Containers/Drawer/Drawer"
-import Appointment from "./Containers/Appointment/Appointment";
+// import Appointment from "./Containers/Appointment/Appointment";
 import Doctors from "./Containers/Doctors/Doctors";
 import PublicRoute from "./Route/PublicRoute";
 import PrivateRoute from "./Route/PrivateRoute";
