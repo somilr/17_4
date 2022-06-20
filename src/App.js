@@ -28,7 +28,6 @@ function App() {
         <PublicRoute path={'/Contact'} component={Contact}/>
         <PublicRoute restricted={true} path={'/Auth'} component={Auth}/>
         <PublicRoute path={'/Doctors'} component={Doctors}/>   
-        {/* <PrivateRoute path={'/Appointment'} component={Appointment} /> */}
         <PublicRoute path={'/BookAppointment'} component={BookAppointment} />
         <PublicRoute path={'/ListAppintment'} component={ListAppintment} />
         <PrivateRoute path={'/Medicine'} component={Medicine}/>

@@ -22,7 +22,7 @@ function BookAppointment(props) {
             localStorage.setItem("users", JSON.stringify(data));
         }
 
-        history.push("/listappointment");
+        history.push("/ListAppintment");
     }
 
     let schema = yup.object().shape({
@@ -65,10 +65,10 @@ function BookAppointment(props) {
                 </div>
                 <div className="row text-center">
                     <div className="col-6">
-                        <NavLink to={"/BookAppointment"}>BookAppoinment</NavLink>
+                        <NavLink to={"/BookAppointment"}>Book Appoinment</NavLink>
                     </div>
                     <div className="col-6">
-                        <NavLink to={"/ListAppintment"}>ListAppoinment</NavLink>
+                        <NavLink to={"/ListAppintment"}>List Appoinment</NavLink>
                     </div>
                 </div>
                 <Formik values={formik}>
