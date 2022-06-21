@@ -14,11 +14,15 @@ function BookAppointment(props) {
         const data = JSON.parse(localStorage.getItem("users"));
 
         console.log(data);
+        let idata = {
+            id: Math.floor(Math.random() * 1000),
+            ...values
+          }
 
         if (data === null) {
-            localStorage.setItem("users", JSON.stringify([values]));
+            localStorage.setItem("users", JSON.stringify([idata]));
         } else {
-            data.push(values);
+            data.push(idata);
             localStorage.setItem("users", JSON.stringify(data));
         }
 

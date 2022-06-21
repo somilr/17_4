@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 
 export default function ListAppintment() {
+  const history =   useHistory();
   const [data, setData] = useState([]);
 
   const loaddata = () => {
@@ -15,6 +16,24 @@ export default function ListAppintment() {
       loaddata()
     },
     [])
+
+  // const handleDelete = (id) => {
+  //   let loaddata = JSON.parse(localStorage.getItem("users"))
+
+  //   let filterData = loaddata.filter((v, i) => v.id !== id);
+
+  //   localStorage.setItem("users", JSON.stringify(filterData));
+    
+  //   setData(loaddata)
+
+  // }
+
+  // const handleEdit = (id) => {
+
+
+
+  // }
+  
 
   return (
     <section id="appointment" classname="appointment">
@@ -34,8 +53,8 @@ export default function ListAppintment() {
           </div>
         </div>
       </div>
-      <div>
-        {
+      <div> 
+        {/* {
           data.map((d, i) => {
             return (
               <div className='row text-center'
@@ -46,10 +65,12 @@ export default function ListAppintment() {
                 <h5>{d.date}</h5>
                 <h5>{d.department}</h5>
                 <h5>{d.message}</h5>
+                <button onClick={(() => handleDelete(d.id))}>Delete</button>
+                <button onClick={(() => handleEdit(d.id))}>Edit</button>
               </div>
             )
           })
-        }
+        } */}
       </div>
     </section>
   )
